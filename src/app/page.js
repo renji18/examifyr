@@ -1,22 +1,35 @@
 "use client";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { collection, getDocs } from "firebase/firestore";
+
 import { sendData } from "@/redux/slice/dataSlice";
+import { db } from "../../firebase/firebase-config";
+import { useEffect } from "react";
 
 function DataComponent() {
   const dispatch = useDispatch();
-  const storedata = useSelector((state) => state.data);
-  console.log(storedata);
+  const storeData = useSelector((state) => state.data);
+  const fetchData = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "examifyr"));
+      const documents = [];
+      querySnapshot.forEach((doc) => {
+        documents.push({ ...doc.data() });
+      });
 
-  const handleStoreData = () => {
-    const newData = { sssss: "bhjm" };
-
-    dispatch(sendData(newData));
+      dispatch(sendData(documents));
+    } catch (error) {
+      console.error("Error fetching data from Firebase:", error);
+    }
   };
-
+  useEffect(() => {
+    fetchData();
+  }, [dispatch]);
+  console.log(storeData);
   return (
     <div>
-      <button onClick={handleStoreData}>Store Data</button>
+      <button>submit</button>
     </div>
   );
 }
