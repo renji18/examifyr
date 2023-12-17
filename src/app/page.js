@@ -4,23 +4,19 @@ import { doc, getDoc } from "firebase/firestore"
 import React, { useEffect } from "react"
 import { useState } from "react"
 import { db } from "../../firebase/firebase-config"
-import Link from "next/link"
 import Loader from "@/components/Loader"
-import Student from "@/components/Student"
+import { useRouter } from "next/navigation"
 
 const Home = () => {
   const [inputValue, setInputValue] = useState(null)
-  const [studentData, setStudentData] = useState(null)
   const [data, setData] = useState(null)
-  const [isStudent, setIsStudent] = useState(null)
+
+  const router = useRouter()
 
   const showData = async () => {
     const ref = doc(db, "examifyr", "examdata")
-
     const docSnap = await getDoc(ref)
-
     const snapData = docSnap.data()
-
     setData(snapData.data)
   }
 
@@ -29,43 +25,36 @@ const Home = () => {
       (user) => user?.enrollment === Number(inputValue)
     )
 
-    console.log(selectedUser, "inside")
-
     if (selectedUser?.length === 0) {
-      return setIsStudent(false)
+      localStorage.setItem(
+        "examifyr-students-data",
+        JSON.stringify({ data: false })
+      )
+    } else {
+      localStorage.setItem(
+        "examifyr-students-data",
+        JSON.stringify({ data: selectedUser[0] })
+      )
     }
-    setIsStudent(true)
-    setStudentData(selectedUser[0])
+
+    router.push("/student")
   }
 
   useEffect(() => {
     showData()
   }, [])
 
-  console.log(studentData)
-  console.log(isStudent)
-
   return (
     <>
       {data ? (
         <div>
-          {studentData && <Student data={studentData} />}
-          {isStudent === false && (
-            <div>
-              <p>Fuck You</p>
-            </div>
-          )}
-          {!studentData && (
-            <div>
-              <input
-                type="number"
-                placeholder="Enrollment Id ..."
-                required
-                onChange={(e) => setInputValue(e.target.value)}
-              />
-              <button onClick={() => getData()}>Search</button>
-            </div>
-          )}
+          <input
+            type="number"
+            placeholder="Enrollment Id ..."
+            required
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <button onClick={() => getData()}>Search</button>
         </div>
       ) : (
         <Loader />
