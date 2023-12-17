@@ -1,8 +1,21 @@
-import { collection, addDoc } from "firebase/firestore";
+
 import { db } from "./firebase-config";
 
-const CollectionRef = collection(db, "examifyr");
+import { doc , setDoc } from "firebase/firestore";
+
+
 
 export const addData = async (data) => {
-  await addDoc(CollectionRef, { data });
+
+
+  
+
+
+ 
+  
+  await setDoc(doc(db, "examifyr", "examdata"), {data});
+
+
+  alert("data uploaded")
+
 };

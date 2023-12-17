@@ -24,8 +24,14 @@ const Admin = () => {
     <div>
       admin pannel
       <br />
+
+    
+      
+          
       <input type="file" onChange={(e) => readExcel(e)} />
-      <button onClick={() => addData(data)}> Upload </button>
+      <button onClick={() => {data!=null && addData(data)}}> Upload </button>
+       
+    
     </div>
   )
 }

@@ -1,39 +1,90 @@
-"use client"
-import React from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { collection, getDocs } from "firebase/firestore"
+"use client";
 
-import { sendData } from "@/redux/slice/dataSlice"
-import { db } from "../../firebase/firebase-config"
-import { useEffect } from "react"
+import {
+  query,
+  where,
+  onSnapshot,
+  collection,
+  doc,
+  getDoc,
+} from "firebase/firestore";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { db } from "../../firebase/firebase-config";
 
-function DataComponent() {
-  const dispatch = useDispatch()
-  const storeData = useSelector((state) => state?.data)
+const Home = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [studentData, setStudentData] = useState(null)
 
-  const fetchData = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(db, "examifyr"))
-      const documents = []
-      querySnapshot.forEach((doc) => {
-        documents.push({ ...doc.data() })
-      })
+  const [data, setData] = useState("");
 
-      dispatch(sendData(documents))
-    } catch (error) {
-      console.error("Error fetching data from Firebase:", error)
-    }
+  const showData = async () => {
+    const ref = doc(db, "examifyr", "examdata");
+
+
+  
+
+    const docSnap = await getDoc(ref);
+
+    const snapData = docSnap.data();
+
+
+    setData(snapData.data)
+
+
+   
+
+   
+  };
+
+
+  console.log(data)
+
+  console.log(studentData)
+
+  const getData = ()=>{
+
+
+    const selectedUser = data?.filter(user => user?.enrollment === Number(inputValue)) 
+
+
+
+
+    setStudentData(selectedUser[0])
+
+
+    
+
+    
+
+
+
+
+
+
+
   }
 
-  useEffect(() => {
-    fetchData()
-  }, [dispatch])
-  console.log(storeData)
-  return (
-    <div>
-      <button>submit</button>
-    </div>
-  )
-}
 
-export default DataComponent
+  useEffect(()=>{
+
+
+    showData()
+
+  },[])
+
+  return (
+    <>
+      <input
+        type="text"
+        placeholder="Enrollment Id ..."
+        required
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+
+      <button onClick={()=>getData()}>Search</button>
+    </>
+  );
+};
+
+export default Home;
