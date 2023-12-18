@@ -6,6 +6,7 @@ import { useState } from "react"
 import { db } from "../../firebase/firebase-config"
 import Loader from "@/components/Loader"
 import { useRouter } from "next/navigation"
+import "./globals.css"
 
 const Home = () => {
   const [inputValue, setInputValue] = useState(null)
@@ -52,9 +53,12 @@ const Home = () => {
             type="number"
             placeholder="Enrollment Id ..."
             required
+            className=""
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <button onClick={() => getData()}>Search</button>
+          <button className="" onClick={() => getData()}>
+            Search
+          </button>
         </div>
       ) : (
         <Loader />
