@@ -47,8 +47,8 @@ const Home = () => {
   return (
     <>
       {data ? (
-        <div className="fixed inset-0 z-10 h-screen w-100px bg-slate-50 flex flex-col items-center justify-center sm:flex-col  ">
-          <div className="  flex   items-center justify-center   ">
+        <div className="fixed inset-0 z-10 h-screen w-100px bg-slate-50 flex flex-col items-center justify-center   ">
+          <div className="  flex   items-center justify-center    ">
             <input
               type="number"
               placeholder="Enrollment No..."

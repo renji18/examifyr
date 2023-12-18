@@ -8,7 +8,7 @@ const Loader = () => {
       <Image
         src={LOADER}
         alt="loader"
-        className="w-[100px] bg-red-400   h-[100px] object-contain"
+        className="w-[100px]    h-[100px] object-contain"
       />
       <p className="mt-[20px] font-hel text-4xl text-red-600 font-bold text-center">
         Loading...
