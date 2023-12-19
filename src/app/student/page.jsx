@@ -21,10 +21,10 @@ const Student = () => {
     <>
       {data !== null ? (
         <div className="absolute inset-0 z-10 h-screen bg-slate-50 flex items-center justify-center flex-col space-y-4 ">
-          <div className="shadow-2xl flex flex-col gap-8 p-10 ">
+          <div className="shadow-2xl flex mx-5 md:mx-0 flex-col gap-8 p-8">
             <div>
               <button
-                className="cursor-pointer bg-red-500 px-2 md:px-4 md:pb-1 text-xl md:text-3xl rounded-full   "
+                className="cursor-pointer -ml-4 bg-red-500 px-2 md:px-4 md:pb-1 text-2xl md:text-3xl rounded-full   "
                 onClick={() => router.push("/")}
               >
                 &larr;
@@ -38,37 +38,30 @@ const Student = () => {
               </center>
             ) : (
               <div className="flex flex-col gap-5">
-                <p className="font-semibold sm:items-center flex flex-col sm:flex-row sm:text-lg text-opacity-60 text-black px-2 ">
-                  {" "}
-                  <span className="sm:text-xl mr-3 text-black">
-                    Enrollment:
-                  </span>{" "}
+                <p className="font-semibold sm:items-center flex flex-col sm:flex-row text-lg text-opacity-60 text-black px-2 ">
+                  <span className="text-xl mr-3 text-black">Enrollment:</span>
                   <span>{data?.enrollment}</span>
                 </p>
-                <p className=" font-semibold sm:items-center  flex flex-col sm:flex-row sm:text-lg text-opacity-60  text-black px-2">
-                  <span className="sm:text-xl mr-3 text-black">
-                    Faculty Name:
-                  </span>{" "}
+                <p className=" font-semibold sm:items-center  flex flex-col sm:flex-row text-lg text-opacity-60  text-black px-2">
+                  <span className="text-xl mr-3 text-black">Faculty Name:</span>{" "}
                   <span>{data?.facultyName}</span>
                 </p>
-                <p className="font-semibold  sm:items-center flex flex-col sm:flex-row sm:text-lg text-opacity-60 text-black px-2">
-                  <span className="sm:text-xl mr-3 text-black">
+                <p className="font-semibold  sm:items-center flex flex-col sm:flex-row text-lg text-opacity-60 text-black px-2">
+                  <span className="text-xl mr-3 text-black">
                     Faculty Number:
                   </span>{" "}
                   <span>{data?.facultyNumber}</span>
                 </p>
-                <p className="font-semibold sm:items-center  flex flex-col sm:flex-row sm:text-lg text-opacity-60 text-black px-2">
-                  <span className="sm:text-xl mr-3 text-black">Reason:</span>{" "}
+                <p className="font-semibold sm:items-center  flex flex-col sm:flex-row text-lg text-opacity-60 text-black px-2">
+                  <span className="text-xl mr-3 text-black">Reason:</span>{" "}
                   <span>{data?.reason}</span>
                 </p>
-                <p className="font-semibold sm:items-center flex flex-col sm:flex-row sm:text-lg text-opacity-60 text-black px-2">
-                  <span className="sm:text-xl mr-3 text-black">
-                    Student Name:
-                  </span>{" "}
+                <p className="font-semibold sm:items-center flex flex-col sm:flex-row text-lg text-opacity-60 text-black px-2">
+                  <span className="text-xl mr-3 text-black">Student Name:</span>{" "}
                   <span>{data?.studentName}</span>
                 </p>
-                <p className="font-semibold sm:items-center flex flex-col sm:flex-row sm:text-lg text-opacity-60 text-black px-2">
-                  <span className="sm:text-xl mr-3 text-black">
+                <p className="font-semibold sm:items-center flex flex-col sm:flex-row text-lg text-opacity-60 text-black px-2">
+                  <span className="text-xl mr-3 text-black">
                     Student Number:
                   </span>{" "}
                   <span>{data?.studentsNumber}</span>
