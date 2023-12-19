@@ -24,7 +24,7 @@ const Student = () => {
           <div className="shadow-2xl flex mx-5 md:mx-0 flex-col gap-8 p-8">
             <div>
               <button
-                className="cursor-pointer -ml-4 bg-red-500 px-2 md:px-4 md:pb-1 text-2xl md:text-3xl rounded-full   "
+                className="cursor-pointer -ml-4 bg-red-500 px-2 md:px-4 pb-1 text-2xl md:text-3xl rounded-full   "
                 onClick={() => router.push("/")}
               >
                 &larr;
