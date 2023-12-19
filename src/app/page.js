@@ -47,17 +47,17 @@ const Home = () => {
   return (
     <>
       {data ? (
-        <div className="fixed inset-0 z-10 h-screen w-100px bg-slate-50 flex flex-col items-center justify-center   ">
-          <div className="  flex   items-center justify-center    ">
+        <div className="fixed inset-0 z-10 h-screen bg-slate-50 flex flex-col items-center justify-center">
+          <div className="flex flex-col gap-5 md:gap-3 md:flex-row items-center justify-center    ">
             <input
               type="number"
               placeholder="Enrollment No..."
               required
               onChange={(e) => setInputValue(e.target.value)}
-              className="px-4 py-2 bg-gray-100 text-black rounded-l-md focus:outline-none   border-2 border-black sm:w-auto sm:mb-0 sm:mr-2 "
+              className="px-2 py-2 bg-gray-100 text-black md:rounded-l-md focus:outline-none border-2 border-black"
             />
             <button
-              className="px-4 py-2  bg-red-500 text-white rounded-r-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300 sm:w-auto "
+              className="px-4 py-2  bg-red-500 text-white md:rounded-r-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300 sm:w-auto "
               onClick={() => getData()}
             >
               Search

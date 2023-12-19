@@ -1,6 +1,6 @@
-import React from "react";
-import LOADER from "../assets/loader.svg";
-import Image from "next/image";
+import React from "react"
+import LOADER from "../assets/loader.svg"
+import Image from "next/image"
 
 const Loader = () => {
   return (
@@ -8,13 +8,13 @@ const Loader = () => {
       <Image
         src={LOADER}
         alt="loader"
-        className="w-[100px]    h-[100px] object-contain"
+        className="md:w-[100px] w-[80px] h-[80px] md:h-[100px] object-contain"
       />
-      <p className="mt-[20px] font-hel text-4xl text-red-600 font-bold text-center">
+      <p className="mt-[50px] text-2xl md:text-4xl text-red-600 font-bold text-center">
         Loading...
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader
